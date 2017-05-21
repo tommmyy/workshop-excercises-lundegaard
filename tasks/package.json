@@ -1,0 +1,16 @@
+{
+  "name": "tasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/run build"
+  },
+  "author": "Tomas Konrady <tomas.konrady@lundegaard.eu>",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "2.2.2",
+    "glob": "7.1.1",
+    "marked": "0.3.6"
+  }
+}
