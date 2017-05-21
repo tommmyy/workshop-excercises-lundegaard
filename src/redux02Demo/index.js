@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import configureStore from '../redux01/configureStore';
+// import configureStore from '../redux01Demo/configureStore';
 import configureStore from './configureStoreWithMiddleware';
 import Root from './Root';
 
