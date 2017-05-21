@@ -430,23 +430,40 @@ body.dark #wrapper {
   </style>
 </head>
 <body>
-  <p>1) Přepište komponentu <code>Timer</code> pomocí funkce, přidejte validaci vstupního stavu (PropTypes)
-2) Vytvořte kompnentu <code>App</code>, která používá <code>Timer</code> k zobrazení aktuálního času</p>
-<pre><code>- Aktualizace je způsobena změnou vnitřního stavu `App`,
-- `setInterval`/ `clearInterval` pomocí vhodných metod životního cyklu,
-- možnost definovat interval pro aktualizaci času pomocí `props` (využít i defaultProps).
-</code></pre><p>3) Balónek</p>
-<pre><code>- Místo `children` použijte novou povinnou property `label`.
-- Dále vytvořte property pro text, který se zobrazí po prasknutí balónku.
-- Přidejte tlačítko &quot;Reset&quot;, který vyfoukne balónek
-- Refaktorujte `Baloon`
-</code></pre><p>4) Rozšiřme projekt z předchozí kapitoly</p>
-<pre><code>- Projekt bude obsahovat dvě kompnenty:
-    * `App` - udržuje stav aplikace
-    * `UsersList` - vykresluje seznam uživatelů
-- Přidejme možnost přidání uživatele skrze formulář:
-    * `UserAddForm` - po odeslání formuláře je komponentě `App` předán nový uživatel
-    * inputy budou kontrolované.
-</code></pre>
+  <h1 id="react">React</h1>
+<h2 id="-kol-1">Úkol 1</h2>
+<ul>
+<li>Přepište komponentu <code>Timer</code> pomocí funkce,</li>
+<li>přidejte validaci vstupního stavu (PropTypes).</li>
+</ul>
+<h2 id="-kol-2">Úkol 2</h2>
+<p>Vytvořte kompnentu <code>App</code>, která používá <code>Timer</code> k zobrazení aktuálního času</p>
+<ul>
+<li>Aktualizace bude způsobena změnou vnitřního stavu <code>App</code>,</li>
+<li>funkce <code>setInterval</code>/ <code>clearInterval</code> budou použity ve vhodných metodách životního cyklu,</li>
+<li>bude možné definovat interval pro aktualizaci času pomocí <code>props</code> (využít i defaultProps).</li>
+</ul>
+<h2 id="-kol-3-bal-nek">Úkol 3 - Balónek</h2>
+<ul>
+<li>Místo <code>children</code> použijte novou povinnou property <code>label</code>.</li>
+<li>Dále vytvořte property pro text, který se zobrazí po prasknutí balónku.</li>
+<li>Přidejte tlačítko &quot;Reset&quot;, který vyfoukne balónek</li>
+<li>Refaktorujte <code>Baloon</code></li>
+</ul>
+<h2 id="-kol-4">Úkol 4</h2>
+<p>Rozšiřme projekt z předchozí kapitoly</p>
+<ul>
+<li>Projekt bude obsahovat dvě komponenty:<ul>
+<li><code>App</code> - udržuje stav aplikace</li>
+<li><code>UsersList</code> - vykresluje seznam uživatelů</li>
+</ul>
+</li>
+<li>Přidejme možnost přidání uživatele skrze formulář:<ul>
+<li><code>UserAddForm</code> - po odeslání formuláře je komponentě <code>App</code> předán nový uživatel</li>
+<li>inputy budou kontrolované.</li>
+</ul>
+</li>
+</ul>
+
 </body>
 </html>
