@@ -1,4 +1,4 @@
-#Redux
+# Redux
 
 ## Úkol 1
 Pokračujte v projektu z minulé kapitoly
