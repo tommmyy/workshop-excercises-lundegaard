@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>src/03-redux.md</title>
+  <title>src/03-redux-extended.md</title>
   <style>
   /*
 This document has been created with Marked.app <http://marked2app.com>, Copyright 2013 Brett Terpstra
@@ -432,12 +432,109 @@ body.dark #wrapper {
 <body>
   <h1 id="redux">Redux</h1>
 <h2 id="-kol-1">Úkol 1</h2>
-<p>Pokračujte v projektu z minulé kapitoly</p>
-<ul>
-<li>přidejte Redux a React-redux</li>
-</ul>
+<p>Opakování React.</p>
+<ol>
+<li>Změňte <code>people</code> na <code>characters</code> v <code>initialState</code> v <code>index.js</code> a následně opravte aplikaci.</li>
+<li>Vytvořte vnitřní stav komponenty <code>StarWars</code> a inicializujte ho z předaných <code>props</code>.</li>
+<li>Vytvořte komponentu <code>CharacterForm</code> a použitejte ji v <code>StarWars</code>.
+Bude obsahovat kontrolovaný input pro zadání jména postavy a tlačíko &#39;Přidat postavu&#39;.
+Po odeslání formuláře se zavolá property <code>onSubmit</code>, které jako argument předáte event a jméno zadané postavy.
+Následně smažete hodnotu inputu.</li>
+<li>Doplňte komponentu <code>StarWars</code> tak, aby skrze property <code>onSubmit</code> komponenty <code>CharacterForm</code> přidávala zadaná nová jména postav do seznamu (jejího vnitřního stavu).</li>
+</ol>
 <h2 id="-kol-2">Úkol 2</h2>
-<p>Integruje dev-tools middleware</p>
+<p>Doplnění aplikace StarWars postavené na Flux.</p>
+<ol>
+<li>Začněte ukládat stav formuláře do vlastního store
+ a. vytvořte soubor pro formulářové akce FormActions.
+ V něm vytvořte action creatory pro reset formuláře a změnu fieldu formuláře.
+ b. vytvořte FormStore, který tyto akce obsluhuje
+ c. Napojte <code>CharactersForm</code> na  <code>FormStore</code>. Při submitu nebude voláná property <code>onSubmit</code> (není třeba předávat z <code>StarWars</code>),
+ ale přímo akce <code>addName</code> nad <code>CharactersStore</code>.</li>
+<li>Napojte <code>CharactersList</code> na <code>CharactersStore</code> a čtěte z něj postavy.</li>
+<li>Odpojte <code>StarWars</code> od <code>CharactersStore</code>.</li>
+</ol>
+<h2 id="-kol-3">Úkol 3</h2>
+<p>Kompozice reducerů.</p>
+<ol>
+<li>Doplňte do stavu atribut &#39;second&#39; a příslušný selektor <code>getSecond</code>. Opravte a doplňte testy.</li>
+<li>Přesuňte reducer pro <code>nested</code> (<code>./reducers/nested.js</code>) do vlastního souboru. V rootReduceru importujte.</li>
+<li>Refaktorujte tak, aby selektor <code>getNestedFirst</code> z rootReducer využíval nový selektor <code>getFirst</code> z <code>nested.js</code>.</li>
+</ol>
+<h2 id="-kol-4">Úkol 4</h2>
+<p>Databáze komiksů.</p>
+<p>Vycházíme z příkladu čítače napojeného na react-redux.
+Aplikace bude zobrazovat informace o komiksech. Bude umět filtrovat podle názvu komiksu a jeho popisu.
+Struktura projektu je dána.
+Data jsou k dispozici v &#39;data.json&#39;.
+Ve stavu bude uložen stav filtru a veškeré komiksy z data.json.</p>
+<p>Tvar stavu:</p>
+<pre><code>{
+    volumes: [...],
+    filter: { name: &#39;&#39;, description: &#39;&#39;}
+}
+</code></pre><h2 id="-kol-5-spole-n-">Úkol 5 (společně)</h2>
+<p>Pokračování z předchozího úkolu.
+Napojení na API skrze redux-thunk.</p>
+<p>API URL:</p>
+<pre><code>const URL = &#39;http://localhost:3000/api&#39;;
 
+// generated at: https://comicvine.gamespot.com/api
+const API_KEY = &#39;7a7664aed393040e7a4e32caabf89960916c6ea2&#39;;
+
+const VOLUMES_FIELDS = [
+    &#39;id&#39;,
+    &#39;name&#39;,
+    &#39;description&#39;,
+    &#39;count_of_issues&#39;,
+    &#39;image&#39;,
+].join(&#39;,&#39;);
+
+const url = `${URL}/volumes/?api_key=${API_KEY}&amp;format=json&amp;field_list=${VOLUMES_FIELDS}&amp;format=json&amp;limit=10&amp;sort=name:asc`
+</code></pre><h2 id="-kol-6">Úkol 6</h2>
+<ol>
+<li>Doplnění vyhledávání</li>
+<li>Řešíme race conditions - ve chvíli kdy probíhá request:
+ a. disablujeme tlačítko hledat,
+ b. zobrazíme hlášku &#39;Načítám...</li>
+<li>Refaktorujte předchozí příklad skrze redux-api-middleware (<a href="https://github.com/agraboso/redux-api-middleware">https://github.com/agraboso/redux-api-middleware</a>)</li>
+<li>Řešíme chyby - pokud se stane chyba během načítání, zobrazíme hlášku &#39;Chyba :(&#39;</li>
+</ol>
+<h2 id="-kol-7-spole-n-">Úkol 7 (společně)</h2>
+<ol>
+<li>redux-form ve <code>Filter</code></li>
+<li>Přidání validace k poli pro vyhledávání</li>
+<li>Vytvořit vlastní MyInput komponentu pro zobrazení textového pole a validační hlášky.</li>
+</ol>
+<h2 id="-kol-8">Úkol 8</h2>
+<h3 id="1-refaktorujte-stav-n-sleduj-c-m-zp-sobem-pomoc-normalizeru-">1. Refaktorujte stav následujícím způsobem pomocí normalizeru.</h3>
+<p>Tvar stavu:</p>
+<pre><code>{
+    entities: {
+        volumes: { 1: { id: 1, ... }, 2: { id: 2, ... } }
+    },
+    ui: {
+        filter: { name: &#39;&#39;, description: &#39;&#39;},
+        error: false,
+        fetching: false,
+    }
+}
+</code></pre><h3 id="2-str-nkov-n-dopln-n-tla-tka-zobrazit-v-ce-">2. Stránkování - doplnění tlačítka &quot;Zobrazit více&quot;.</h3>
+<p>Tvar stavu:</p>
+<pre><code>{
+    entities: {
+        volumes: { 1: { id: 1, ... }, 2: { id: 2, ... } }
+    },
+    ui: {
+        filter: { name: &#39;&#39;, description: &#39;&#39;},
+        error: false,
+        fetching: false,
+        pagination: {
+            page: 1,
+            byId: [1, 2]
+        }
+    }
+}
+</code></pre>
 </body>
 </html>

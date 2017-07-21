@@ -3,13 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aftonbladet/redux-api-middleware": "1.1.1",
+    "events": "1.1.1",
+    "express": "4.15.3",
+    "flux": "3.1.2",
+    "humps": "2.0.1",
+    "keymirror": "0.1.1",
+    "normalizr": "3.2.3",
+    "prop-types": "15.5.10",
+    "ramda": "0.24.1",
     "react": "15.5.4",
     "react-dom": "15.5.4",
-    "prop-types": "15.5.10",
-    "keymirror": "0.1.1",
     "react-redux": "5.0.1",
     "redux": "3.6.0",
     "redux-devtools": "3.3.1",
+    "redux-form": "7.0.1",
+    "redux-logger": "3.0.6",
     "redux-thunk": "2.1.0"
   },
   "devDependencies": {
@@ -21,5 +30,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/api": {
+      "target": "https://comicvine.gamespot.com",
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
   }
 }
